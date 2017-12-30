@@ -2,6 +2,9 @@ package demo.com.aopdemo.dao;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class AccountDAO {
 
@@ -20,5 +23,20 @@ public class AccountDAO {
     public void setName(String name) {
         System.out.println(getClass() + ": run setter method");
         this.name = name;
+    }
+
+    public List<Acount> findAcounts(){
+
+        List<Acount> myAcounts = new ArrayList<>();
+
+        Acount temp1 = new Acount("John" , "Silver");
+        Acount temp2 = new Acount("Madhu" , "Platinum");
+        Acount temp3 = new Acount("Luca" , "Gold");
+
+        myAcounts.add(temp1);
+        myAcounts.add(temp2);
+        myAcounts.add(temp3);
+
+        return myAcounts;
     }
 }

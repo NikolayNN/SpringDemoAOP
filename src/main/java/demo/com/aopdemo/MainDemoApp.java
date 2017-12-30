@@ -6,6 +6,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import demo.com.aopdemo.dao.AccountDAO;
 
+import java.util.List;
+
 public class MainDemoApp {
 
     public static void main(String[] args) {
@@ -16,6 +18,10 @@ public class MainDemoApp {
 
         accountDAO.setName("John");
         accountDAO.getName();
+
+        List<Acount> result = accountDAO.findAcounts();
+
+        System.out.println("Main program : found Account" + result);
 
         MembershipDAO membershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 
