@@ -39,4 +39,9 @@ public class AccountDAO {
 
         return myAcounts;
     }
+
+    public List<Acount> testThrowException(){
+
+        throw new RuntimeException("simulate exception");
+    }
 }

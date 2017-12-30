@@ -3,10 +3,7 @@ package demo.com.aopdemo.aspect;
 import demo.com.aopdemo.dao.Acount;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -76,5 +73,17 @@ public class MyDemoLoggingAspect {
 
         result.stream()
                 .forEach(acount -> acount.setName(acount.getName().toUpperCase()));
+    }
+
+    @AfterThrowing(
+            pointcut = "execution(* demo.com.aopdemo.dao.AccountDAO.*(..))",
+            throwing = "theExc"
+    )
+    public void loggingException(JoinPoint joinPoint, Throwable theExc){
+
+        String methodName = joinPoint.getSignature().toShortString();
+
+        System.out.println(methodName + " throw the exception " + theExc);
+
     }
 }
